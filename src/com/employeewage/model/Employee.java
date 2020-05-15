@@ -7,7 +7,6 @@ public class Employee
 
 	public Employee(int perHour, int workHour, int dayHour)
 	{
-		/*this.setEmployeeWas("Part time");*/
 		this.perHour=perHour;
 		this.workHour=workHour;
 		this.dayHour=dayHour;

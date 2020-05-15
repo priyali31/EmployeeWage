@@ -11,7 +11,7 @@ class tester
 	public static int wageList()
 	{
 		Scanner sc = new Scanner(System.in);
-		System.out.println("1...Today's payment");
+		System.out.println("1...Today's payment..");
 		System.out.println("2...Payment of whole month...");
 		System.out.println("3...Employee worked as full time or part time..");
 		System.out.println("4..Employee was Present OR Absent..");
@@ -24,7 +24,7 @@ class tester
 
 	public static void main(String[] args)
 	{
-		System.out.println("Welcome to Employee Wage Computation Program");
+		System.out.println("Computation Program");
 		Random rand=new Random();
 		EmployeeComputation ec=new EmployeeComputation();
 		Employee emp=new Employee(20,rand.nextInt(10),8);
@@ -32,30 +32,26 @@ class tester
 		while(true)
 		{
 		          int option = wageList();
-		   	   switch(option)
+		   	  switch(option)
 			   {
-				case 1:
-				System.out.println("Today's Payment is" + ec.calPayment(emp));
-				break;
-				case 2:	
-				System.out.println("Payment of whle month is " + ec.monthwiseCalculatePayment(emp));
-				break;
-				case 3:
-				System.out.println("Employee  was " + emp.getEmployeeWas());
-				break;
-				case 4:
-				if(ec.isPresent(emp))
-				{
-				System.out.println("Present");
-			  	}
-				else
-				{
-			 	System.out.println("Absent");
-				}
-				break;
-				case 5:
-				System.exit(0);
-				break;
+			    case 1:
+		   	    System.out.println("Todays Payment is "+ec.calPayment(emp));
+			    break;
+		       	    case 2:
+			    System.out.println("whole Month Payment is" + ec.monthwiseCalculatePayment(emp));
+		            break;
+	     		    case 3:
+	          	    System.out.println("Wages till condition " + ec.hundredCalPayment(emp));
+           		    break;
+			    case 4:
+            		    System.out.println("Employee worked as" + ec.getEmployeeWas(emp));
+			    break;
+			    case 5:
+			    System.out.println(ec.isPresent(emp)?"Present":"Absent");
+			    break;
+			    case 6:
+			    System.exit(0);
+			    break;
 		       	   }
 		}
 	}

@@ -70,6 +70,7 @@ public class EmployeeComputation implements EmployeeComputationService
 	}
 
 	//Daily Wages
+	@Override
 	public int computeEmpWage(Employee emp, String companyName)
 	{
 		Company fcmp =  findCompany(companyName);
@@ -77,6 +78,7 @@ public class EmployeeComputation implements EmployeeComputationService
 		return dw;
 	}
 	//Total Wages 
+	@Override
 	public int computeEmpWage(Company company)
 	{
 		int totalWage=0;
@@ -89,5 +91,27 @@ public class EmployeeComputation implements EmployeeComputationService
 		}
 		return totalWage;
 	}
+	@Override
+	public int getTotalCompanyEmpWage(String companyName)
+	{
+		this.computeEmpWage();
+		Company fcmp = this.findCompany(companyName);
+		if(fcmp!=null)
+			return fcmp.getTotalEmpWage();
+		return 0;
+	}
 
+	@Override
+	public void prinAllDetails()
+	{
+		for(Company cmp : this.companyList)
+		{
+			System.out.println(+cmp.getCompanyName());
+			for (Employee employee: cmp.getEmpList()) 
+			{
+				this.getEmployeeWas(employee);
+				System.out.println(employee.toString());
+			}
+		}
+	}
 }

@@ -1,4 +1,5 @@
 package com.employeewage.service;
+import java.util.ArrayList;
 import com.employeewage.model.Employee;
 import com.employeewage.model.company;
 
@@ -13,5 +14,9 @@ public interface EmployeeComputationService
 	public void computeEmpWage();
 	public int computeEmpWage(Employee emp, String companyName);
 	public int computeEmpWage(Company company);
-
+	public int computeEmpWage(Employee emp, String companyName);
+	public int computeEmpWage(Company company);
+	public int computeEmpWage(Employee emp);
+	public int getTotalCompanyEmpWage(String companyName);
+	public void prinAllDetails();
 }

@@ -21,6 +21,20 @@ class tester
 		System.out.println();
 		return choice;	
 	}
+	public static void addCompany( EmployeeWageCompute computer)
+	{
+		if(computer !=null)
+		Scanner sc = new Scanner(System.in);
+		System.out.print("+CompanyName : ");
+		String cmpName = sc.next();
+		System.out.print("+Wage Per Hour : ");
+		int rate = sc.nextInt();
+		System.out.print("+No of Working Days Month : ");
+		int nowkDays = sc.nextInt();
+		System.out.print("+Max Hour per Month : ");
+		int maxhr = sc.nextInt();
+		computer.addCompanyWithEmployees(cmpName, rate , nowkDays, maxhr);
+	}
 
 	public static void main(String[] args)
 	{
@@ -29,22 +43,34 @@ class tester
 		EmployeeComputation ec=new EmployeeComputation();
 		ec.addCompanywithEmployees("Barclays",50,70,200);
 
-		/*while(true)
+		while(true)
 		{
 		          int option = wageList();
 		   	  switch(option)
 			   {
 			    case 1:
-		   	    System.out.println("Todays Payment is "+ec.calPayment(emp));
+			    System.out.print("CompanyName is ");
+			    String cmpName = sc.next();
+               		    System.out.print("Hourly wage ");
+			    int rate = sc.nextInt();
+			    System.out.print("Working Days Month is ");
+			    int nowkDays = sc.nextInt();
+			    System.out.print("Maximum Hour per Month is ");
+			    int maxhr = sc.nextInt();
+			    computer.addCompanyWithEmployees(cmpName, rate , nowkDays, maxhr);
 			    break;
-		       	    case 2:
-			    System.out.println("whole Month Payment is" + ec.monthwiseCalculatePayment(emp));
-		            break;
-	     		    case 3:
-	          	    System.out.println("Wages till condition " + ec.hundredCalPayment(emp));
-           		    break;
+			    case 2:
+			    System.out.print("CompanyName : ");
+			    String cmpNamecase2 = sc.next();
+			    System.out.println("Total Emp Wage for "+ cmpNamecase2 +":"+ computer.getTotalCompanyEmpWage(cmpNamecase2));
+			    break;
+			    case 3:
+			    computer.prinAllDetails();
+			    break;
 			    case 4:
-            		    System.out.println("Employee worked as" + ec.getEmployeeWas(emp));
+			    System.out.print("CompanyName is ");
+               		    String cmpNamecase3 = sc.next();
+			    System.out.println("Employee worked as " + computer.getEmployeeWas(new Employee("person 1", cmpNamecase3 , new ArrayList<Integer>())));
 			    break;
 			    case 5:
 			    System.out.println(ec.isPresent(emp)?"Present":"Absent");
@@ -53,7 +79,7 @@ class tester
 			    System.exit(0);
 			    break;
 		       	   }
-		}*/
+		}
 	}
 
 }

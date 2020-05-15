@@ -1,5 +1,6 @@
-package com.employeewage.model; import com.employeewage.model.Employee; 
-import java.util.ArrayList; import java.util.List;
+package com.employeewage.model; 
+import java.util.ArrayList; 
+import java.util.List;
 
 public class company 
 {

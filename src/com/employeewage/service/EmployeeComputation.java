@@ -5,20 +5,24 @@ import java.io.*;
 
 public class EmployeeComputation
 {
-
-
         public boolean isPresent(Employee emp)
 	{
-                if(emp.getWorkHour() < 1)
+                if(emp.getWorkHour()<1)
 		{
                         return false;
                 }
                 return true;
         }
-
-        public int calPayment(Employee emp)
+	public int calPayment(Employee emp)
 	{
-                if(emp.getWorkHour()<emp.getDayHour())
+		emp.setPayment(0);
+		emp.setPayment(emp.getPerHour()*emp.getWorkHour());
+		return emp.getPayment();
+	}
+
+        public String getEmployeeWas(Employee emp)
+	{
+                if((emp.getWorkHour()/20)<emp.getDayHour())
 		{
                  emp.setEmployeeWas("worked as part time");
                 }
@@ -26,8 +30,7 @@ public class EmployeeComputation
 		{
                  emp.setEmployeeWas("worked as full time");
                 }
-                emp.setPayment(emp.getPerHour()*emp.getWorkHour());
-                return emp.getPayment();
+		return emp.getEmployeeWas();
         }
 
         public int monthwiseCalculatePayment(Employee emp)
@@ -39,7 +42,19 @@ public class EmployeeComputation
                         emp.setPayment(emp.getPayment() + (emp.getPerHour() * emp.getWorkHour()));
                 }
                 return emp.getPayment();
-        }
+	}
+	public int hundredCalPayment(Employee emp)
+	{
+		Random rand=new Random();
+		emp.setPayment(0);
+		emp.setWorkHour(0);
+		while(emp.getWorkHour()<=100)
+		{
+			emp.setWorkHour(emp.getWorkHour()+rand.nextInt(9));
+		}
 
+		emp.setPayment(emp.getPerHour()*emp.getWorkHour());
+		return emp.getPayment();
+	}
 }
 

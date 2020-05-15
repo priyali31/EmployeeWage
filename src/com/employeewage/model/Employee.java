@@ -1,15 +1,16 @@
 package com.employeewage.model;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Employee
 {
-	private String employeeWas;
-	private int perHour,workHour,dayHour,payment;
+	private String employeeWas,companyName;
+	private int payment;
+	private List<Integer> dw;
 
-	public Employee(int perHour, int workHour, int dayHour)
+	public Employee(ArrayList<Integer> dw)
 	{
-		this.perHour=perHour;
-		this.workHour=workHour;
-		this.dayHour=dayHour;
+		this.dw=dw;
 	}
 
 	public String getEmployeeWas()
@@ -22,34 +23,9 @@ public class Employee
 		this.employeeWas=employeeWas;
 	}
 
-	public int getPerHour()
+	public void setCompanyName(String companyName)
 	{
-		return this.perHour;
-	}
-
-	public void setPerHour(int perHour)
-	{
-		this.perHour=perHour;
-	}
-
-	public int getWorkHour()
-	{
-		return this.workHour;
-	}
-
-	public void setWorkHour(int workHour)
-	{
-		this.workHour = workHour;
-	}
-
-	public int getDayHour()
-	{
-		return this.dayHour;
-	}
-
-	public void setDayHour(int dayHour)
-	{
-		this.dayHour=dayHour;
+		this.companyName=companyName;
 	}
 
 	public int getPayment()
@@ -62,9 +38,18 @@ public class Employee
 		this.payment=payment;
 	}
 
+	public List<Integer> getDw()
+	{
+		return dw;
+	}
+
+	public void setDw(List<Integer> dw)
+	 {
+		this.dw=dw;
+	}
 	@Override
 	public String toString()
 	{
-		return "Employee is  " + this.employeeWas + "Wage per hour is" + this.perHour + "Working Hour is " + this.workHour +" Whole day hour record :" + this.dayHour + "Total Payment delivered " + this.payment ;
+		return "Employee is  " + this.employeeWas + "Overall Payment of Employee " + this.payment;
 	}
 }

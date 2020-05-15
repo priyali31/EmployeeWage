@@ -1,6 +1,5 @@
 package com.employeewage.service;
 import java.util.*;
-import com.employeewage.model.*;
 import com.employeewage.service.*;
 
 public class EmployeeComputation implements EmployeeComputationService
@@ -8,9 +7,6 @@ public class EmployeeComputation implements EmployeeComputationService
 	
 	private List<Company> companyList;
 	private Map<String,Company> companyHashMap;
-	/*private static final int dailyWagePerHour = 20;
-	private static final int fullDayHour = 8;*/
-
 	public EmployeeComputation()
 	{
 		companyList = new ArrayList<>();
@@ -22,22 +18,22 @@ public class EmployeeComputation implements EmployeeComputationService
 		int random=new Random().nextInt(100)%2;
 		return random==1?true:false;
 	}
-
+	@Override
 	public int randomWorkHours(String companyName)
 	{
 		int dayHour=this.findCompany(companyName).getMaxHoursPerMonth();
 		return new Random().nextInt(dayHour)%2;
 	}
-
+	@Override
 	public void addCompanyWithEmployees(String companyName,int ratePerHour,int workingDays,int maxHoursPerMonth)
 	{
 		Company cp=new Company(companyName,ratePerHour,workingDays,maxHoursPerMonth);
-		//cp.setEmpList(DummyEmployee(companyName,workingDays));
+		cp.setEmpList(DummyEmployee(companyName,workingDays));
 		companyList.add(cp);
 		companyHashMap.put(companyName,cp);
 		System.out.println("Company with employee");
 	}
-
+	@Override
 	public ArrayList<Employee> createDummyEmployee(String companyName, int WorkingDays)
 	{
 		ArrayList<Employee> empList = new ArrayList<>();
@@ -53,7 +49,8 @@ public class EmployeeComputation implements EmployeeComputationService
 		}
 		return empList;
 	}
-
+	
+	@Override
 	public Company findCompany(String companyName)
 	{
 		for (Company company : companyList)
@@ -63,7 +60,7 @@ public class EmployeeComputation implements EmployeeComputationService
 		}
 		return null;
 	}
-
+	@Override
 	public void computeEmpWage()
 	{
 		for (Company company : companyList) 
@@ -72,12 +69,20 @@ public class EmployeeComputation implements EmployeeComputationService
 		}
 	}
 
+	//Daily Wages
+	public int computeEmpWage(Employee emp, String companyName)
+	{
+		Company fcmp =  findCompany(companyName);
+		int dw=(new Random().nextInt(10)*fcmp.getRatePerHour());
+		return dw;
+	}
+	//Total Wages 
 	public int computeEmpWage(Company company)
 	{
 		int totalWage=0;
 		for (Employee emp : company.getEmpList()) 
 		{
-			for (int dw : emp.getDailyWages()) 
+			for (int dw : emp.getDW()) 
 			{
 				totalWage += (DW*company.getRatePerHour());
 			}

@@ -1,66 +1,102 @@
 import java.util.Random;
 import java.io.*;
+import java.util.Scanner;
 class EmployeeComputation
 {
-	
-	private int perHour,workHour,dayHour,payment;
 	private String employeeWas;
+	private int perHour,workHour,dayHour,payment;
 	public static Random rand=new Random();
+	public static Scanner sc=new Scanner(System.in);
 
-	EmployeeComputation(int perHour, int workHour, int dayHour)
-	{	
+	EmployeeComputation(int perHour,int workHour,int dayHour)
+	{
+		this.setEmployeeWas("full time");
 		this.perHour=perHour;
 		this.workHour=workHour;
 		this.dayHour=dayHour;
-		this.setEmployeeWas("full time");
+		this.calPayment();
 	}
-	
+
 	public String getEmployeeWas()
 	{
 		return this.employeeWas;
 	}
+
 	public void setEmployeeWas(String employeeWas)
 	{
 		this.employeeWas=employeeWas;
 	}
-	public int getperHour()
+
+	public int getPerHour()
 	{
 		return this.perHour;
 	}
-	public void setperHour(int wage)
+
+	public void setPerHour(int wage)
 	{
 		this.perHour=wage;
-	}
-	public static boolean isPresent()
-	{
-		int random=rand.nextInt(50)%2;
-		return random==1?true:false; 
 	}
 
 	public int calPayment()
 	{
 		if(this.workHour<this.dayHour)
 		{
-			this.setEmployeeWas("part time");
+		this.setEmployeeWas("Part time");
 		}
-		
 		this.payment=this.perHour*this.workHour;
 		return this.payment;
 	}
 
+	public boolean isPresent()
+	{
+		if(this.workHour<1)
+		{
+		return false;
+		}
+		return true;
+	}
+
 	public static void main(String[] args)
 	{
-		EmployeeComputation appObj=new EmployeeComputation(20,rand.nextInt(10),8);
-		System.out.println("Payment is "+appObj.calPayment());
-		System.out.println("Employee was "+appObj.getEmployeeWas());
-		System.out.println("Computation Program");
-			if(isPresent())
+	System.out.println(" ......................Computation Program..................");
+	EmployeeComputation appObj=new EmployeeComputation(20,rand.nextInt(10),8);
+
+		 while(true)
+		   {
+		  	System.out.println("1...Payment ..");
+			System.out.println("2...Employee Was..");
+			System.out.println("3...Present OR Absent..");
+			System.out.println("4...Exit..");
+			System.out.println("Choice : ");
+			int choice = sc.nextInt();
+			System.out.println();
+
+			switch(choice)
 			{
-			System.out.println("Employee is Present");
+				case 1:
+				System.out.println("Payment is " + appObj.calPayment());
+				break;
+				case 2:
+				System.out.println("Employee was  " + appObj.getEmployeeWas());
+				break;
+				case 3:
+				if(appObj.isPresent())
+				{
+				System.out.println("Present");
+				}
+				else
+				{
+				System.out.println("Absent");
+				}
+				break;
+				case 4:
+				System.exit(0);
+				break;
+				default:
+				System.out.println("Wrong input");
+				break;
 			}
-			else
-			{
-			System.out.println("Employee is Absent");
-			}
+
+		}
 	}
 }

@@ -24,8 +24,8 @@ public class EmployeeComputation implements EmployeeComputationService
 
 	public void addCompanyWithEmployees(String companyName,int ratePerHour,int workingDays,int maxHoursPerMonth)
 	{
-		Company cp=new Company(companyName,eatePerHour,workingDays,maxHoursPerMonth);
-		cmp.setEmpList(Employee(companyName,workingDays));
+		Company cp=new Company(companyName,ratePerHour,workingDays,maxHoursPerMonth);
+		cp.setEmpList(Employee(companyName,workingDays));
 		System.out.println("Company with employee");
 	}
 
@@ -54,44 +54,4 @@ public class EmployeeComputation implements EmployeeComputationService
 		}
 		return null;
 	}
-/*
-	@Override
-	public int calculatePay(Employee emp){
-		emp.setPay(0);
-		emp.setPay(dailyWagePerHour * emp.getWorkHour());
-		return emp.getPay();
-	}
-	@Override
-	public String getTypeOfEmployee(Employee emp){
-		if((emp.getWorkHour()/20) < fullDayHour){
-			emp.setTypeEmployee("Part-Time");
-		}
-		else{
-			emp.setTypeEmployee("Full-Time");
-		}
-		return emp.getTypeEmployee();
-	}
-	@Override
-	public int monthlyCalculatePay(Employee emp){
-		Random sysRand = new Random();
-		emp.setPay(0);
-		emp.setWorkHour(0);
-		for(int i=0;i<20;i++){
-			emp.setWorkHour(emp.getWorkHour() + sysRand.nextInt(9));
-		}
-		emp.setPay(dailyWagePerHour * emp.getWorkHour());
-		return emp.getPay();
-	}
-	@Override
-	public int tillHundredCalculatePay(Employee emp){
-		Random sysRand = new Random();
-		emp.setPay(0);
-		emp.setWorkHour(0);
-		while(emp.getWorkHour() <= 100){
-			emp.setWorkHour(emp.getWorkHour() + sysRand.nextInt(9));
-		}
-		emp.setPay(dailyWagePerHour * emp.getWorkHour());
-		return emp.getPay();
-	}
-*/
 }

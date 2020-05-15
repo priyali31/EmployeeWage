@@ -1,7 +1,7 @@
 package com.employeewage.model; import com.employeewage.model.Employee; 
 import java.util.ArrayList; import java.util.List;
 
-public class Company 
+public class company 
 {
     private final String companyName;
     private final int ratePerHour;
@@ -10,7 +10,7 @@ public class Company
     private int totalEmpWage;
     List<Employee> empList;
 
-    Company(String companyName,int ratePerHour,int workingDays,int maxHoursPerMonth)
+    company(String companyName,int ratePerHour,int workingDays,int maxHoursPerMonth)
     {
         this.companyName=companyName;
         this.ratePerHour=ratePerHour;

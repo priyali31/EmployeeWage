@@ -14,7 +14,8 @@ public class EmployeeComputation implements EmployeeComputationService
 	}
 
 	@Override
-	public boolean isPresent(Employee emp){
+	public boolean isPresent(Employee emp)
+	{
 		int random=new Random().nextInt(100)%2;
 		return random==1?true:false;
 	}
@@ -27,14 +28,14 @@ public class EmployeeComputation implements EmployeeComputationService
 	@Override
 	public void addCompanyWithEmployees(String companyName,int ratePerHour,int workingDays,int maxHoursPerMonth)
 	{
-		Company cp=new Company(companyName,ratePerHour,workingDays,maxHoursPerMonth);
-		cp.setEmpList(DummyEmployee(companyName,workingDays));
-		companyList.add(cp);
-		companyHashMap.put(companyName,cp);
+		Company cmp=new Company(companyName,ratePerHour,workingDays,maxHoursPerMonth);
+		cmp.setEmpList(DummyEmployee(companyName,workingDays));
+		companyList.add(cmp);
+		companyHashMap.put(companyName,cmp);
 		System.out.println("Company with employee");
 	}
 	@Override
-	public ArrayList<Employee> createDummyEmployee(String companyName, int WorkingDays)
+	public ArrayList<Employee> dummyEmployee(String companyName, int WorkingDays)
 	{
 		ArrayList<Employee> empList = new ArrayList<>();
 		Employee em=null;
@@ -84,9 +85,9 @@ public class EmployeeComputation implements EmployeeComputationService
 		int totalWage=0;
 		for (Employee emp : company.getEmpList()) 
 		{
-			for (int dw : emp.getDW()) 
+			for (int dw : emp.getDw()) 
 			{
-				totalWage += (DW*company.getRatePerHour());
+				totalWage += (Dw*company.getRatePerHour());
 			}
 		}
 		return totalWage;
